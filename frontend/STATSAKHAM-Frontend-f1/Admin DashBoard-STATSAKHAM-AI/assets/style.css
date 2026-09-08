@@ -1,0 +1,68 @@
+
+:root{
+  --brand:#0b5ed7;
+  --brand-dark:#084298;
+  --brand-soft:#eaf2ff;
+  --ink:#172033;
+  --muted:#6c757d;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --border:#e6eaf0;
+  --success:#198754;
+  --warning:#ffc107;
+  --danger:#dc3545;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{text-decoration:none}
+.app-shell{min-height:100vh;display:flex}
+.sidebar{width:265px;background:#fff;border-right:1px solid var(--border);position:fixed;left:0;top:0;bottom:0;z-index:1030;overflow-y:auto;transition:.2s}
+.sidebar.collapsed{width:78px}
+.brand{height:72px;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid var(--border);font-weight:800;color:var(--brand);white-space:nowrap}
+.brand-mark{width:38px;height:38px;border-radius:10px;background:var(--brand);color:#fff;display:grid;place-items:center}
+.sidebar.collapsed .brand-text,.sidebar.collapsed .nav-label{display:none}
+.nav-section{padding:16px 12px 6px;color:#8a93a2;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.nav-link{display:flex;align-items:center;gap:12px;color:#4b5563;padding:10px 14px;border-radius:10px;margin:3px 0;font-weight:600}
+.nav-link:hover{background:var(--brand-soft);color:var(--brand)}
+.nav-link.active{background:var(--brand-soft);color:var(--brand);font-weight:800;box-shadow:inset 3px 0 0 var(--brand),0 3px 10px rgba(11,94,215,.10)}
+.nav-link i{width:20px;text-align:center}
+.main-wrap{margin-left:265px;min-width:0;flex:1;transition:.2s}
+.main-wrap.expanded{margin-left:78px}
+.topbar{height:72px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;padding:0 22px;position:sticky;top:0;z-index:1020}
+.topbar .page-title{font-size:20px;font-weight:800;margin-right:auto}
+.content{padding:22px}
+.card{border:1px solid var(--border);border-radius:16px;box-shadow:0 3px 14px rgba(31,41,55,.04)}
+.card-header{background:#fff;border-bottom:1px solid var(--border);font-weight:800}
+.kpi{padding:20px}
+.kpi .label{color:var(--muted);font-size:13px}
+.kpi .value{font-size:28px;font-weight:800;margin-top:4px}
+.kpi .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand)}
+.section-title{font-size:18px;font-weight:800;margin:0}
+.muted{color:var(--muted)}
+.empty-state{padding:40px 18px;text-align:center;color:var(--muted)}
+.empty-state i{font-size:36px;margin-bottom:10px}
+.table thead th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#6c757d;white-space:nowrap}
+.table td{vertical-align:middle}
+.badge-soft{background:var(--brand-soft);color:var(--brand)}
+.btn-brand{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn-brand:hover{background:var(--brand-dark);border-color:var(--brand-dark);color:#fff}
+.form-control,.form-select{border-radius:10px}
+.modal-content{border-radius:16px;border:1px solid var(--border)}
+.toast-container{z-index:2000}
+.loading-overlay{position:fixed;inset:0;background:rgba(255,255,255,.72);display:none;align-items:center;justify-content:center;z-index:3000}
+.loading-overlay.show{display:flex}
+.chart-box{height:300px;position:relative}
+.quick-action{height:100%;padding:18px;border:1px solid var(--border);border-radius:14px;background:#fff;cursor:pointer}
+.quick-action:hover{border-color:#bfd3f5;box-shadow:0 5px 20px rgba(20,60,120,.07)}
+.metric-row{display:flex;justify-content:space-between;gap:15px;align-items:center;margin:14px 0}
+.progress{height:8px}
+.login-page{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#eff5ff,#f8faff)}
+.login-card{width:min(460px,92vw);padding:34px;background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 10px 40px rgba(31,41,55,.08)}
+.login-brand{display:flex;align-items:center;gap:12px;font-size:23px;font-weight:900;color:var(--brand);margin-bottom:24px}
+.nav-tabs .nav-link{border-radius:8px}
+.file-drop{border:2px dashed #cbd5e1;border-radius:14px;padding:30px;text-align:center;background:#fbfcfe}
+@media(max-width:991px){
+ .sidebar{transform:translateX(-100%)}
+ .sidebar.mobile-open{transform:translateX(0)}
+ .main-wrap,.main-wrap.expanded{margin-left:0}
+}
