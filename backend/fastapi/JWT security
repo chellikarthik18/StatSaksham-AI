@@ -1,0 +1,36 @@
+# security/jwt.py
+
+from datetime import datetime, timedelta, timezone
+
+from jose import jwt
+
+from config import settings
+
+
+def create_access_token(
+    data: dict,
+    expires_delta: timedelta | None = None
+):
+    payload = data.copy()
+
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = (
+            datetime.now(timezone.utc)
+            + timedelta(
+                minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
+            )
+        )
+
+    payload.update({
+        "exp": expire
+    })
+
+    token = jwt.encode(
+        payload,
+        settings.SECRET_KEY,
+        algorithm=settings.ALGORITHM
+    )
+
+    return token
