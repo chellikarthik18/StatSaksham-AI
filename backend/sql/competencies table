@@ -1,0 +1,38 @@
+CREATE TABLE competencies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    role_id INT NOT NULL,
+
+    skill_id INT NOT NULL,
+
+    required_score DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+
+    minimum_level ENUM(
+        'Beginner',
+        'Intermediate',
+        'Advanced',
+        'Expert'
+    ) DEFAULT 'Beginner',
+
+    importance ENUM(
+        'Low',
+        'Medium',
+        'High',
+        'Critical'
+    ) DEFAULT 'Medium',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_competency_role
+        FOREIGN KEY (role_id)
+        REFERENCES roles(id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_competency_skill
+        FOREIGN KEY (skill_id)
+        REFERENCES skills(id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT uq_role_skill
+        UNIQUE (role_id, skill_id)
+);
