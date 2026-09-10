@@ -1,3 +1,0 @@
-CREATE DATABASE IF NOT EXISTS ai_learning_platform;
-
-USE ai_learning_platform;
