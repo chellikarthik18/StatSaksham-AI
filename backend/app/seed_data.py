@@ -1,0 +1,182 @@
+"""
+Reference data used to seed the database and to power the deterministic
+quiz generator's topic question bank. The iGOT / NSSTA catalogue entries
+below are clearly-labelled MOCK data for demo purposes - this project does
+NOT integrate with a live government API (no credentials were provided).
+"""
+
+DEPARTMENTS = [
+    "Economic Statistics", "Social Statistics", "National Accounts",
+    "Survey Operations", "Data Processing & IT", "Administration",
+]
+
+SKILLS = [
+    {"name": "Survey Design", "category": "Statistical"},
+    {"name": "Sampling", "category": "Statistical"},
+    {"name": "Data Quality", "category": "Statistical"},
+    {"name": "National Accounts", "category": "Statistical"},
+    {"name": "Python", "category": "Technical"},
+    {"name": "SQL", "category": "Technical"},
+    {"name": "AI/ML", "category": "Technical"},
+    {"name": "Data Visualization", "category": "Technical"},
+    {"name": "Cybersecurity", "category": "Digital Governance"},
+    {"name": "Data Privacy", "category": "Digital Governance"},
+    {"name": "e-Governance Tools", "category": "Digital Governance"},
+    {"name": "Communication", "category": "Behavioural"},
+    {"name": "Leadership", "category": "Behavioural"},
+    {"name": "Team Management", "category": "Behavioural"},
+]
+
+DESIGNATIONS = [
+    "Statistical Officer", "Senior Statistical Officer", "Assistant Director",
+    "Deputy Director", "Investigator", "Data Analyst",
+]
+
+# Mock iGOT Karmayogi catalogue (demo data - not a live sync).
+MOCK_COURSES = [
+    {"title": "AI Foundations for Government", "provider": "iGOT Karmayogi", "category": "Technical",
+     "duration_hours": 6, "level": "Intermediate", "skill": "AI/ML",
+     "description": "Practical understanding of AI, responsible AI and government use cases.",
+     "modules": ["AI fundamentals", "Responsible AI", "Government use cases", "Mini assessment"]},
+    {"title": "Python for Data Analysis", "provider": "iGOT Karmayogi", "category": "Technical",
+     "duration_hours": 10, "level": "Beginner", "skill": "Python",
+     "description": "Python workflows for cleaning, analysis and reproducible statistical work.",
+     "modules": ["Python basics", "Pandas", "Data cleaning", "Analysis practice"]},
+    {"title": "SQL & Data Management", "provider": "iGOT Karmayogi", "category": "Technical",
+     "duration_hours": 7, "level": "Intermediate", "skill": "SQL",
+     "description": "Query, join and manage structured datasets for analytical reporting.",
+     "modules": ["SELECT & filters", "Joins", "Aggregation", "Practical queries"]},
+    {"title": "Cybersecurity & Data Privacy", "provider": "iGOT Karmayogi", "category": "Digital Governance",
+     "duration_hours": 4, "level": "Beginner", "skill": "Cybersecurity",
+     "description": "Secure digital practices and privacy awareness in government work.",
+     "modules": ["Threats", "Account security", "Privacy basics", "Incident awareness"]},
+    {"title": "Data Visualization for Policy", "provider": "iGOT Karmayogi", "category": "Technical",
+     "duration_hours": 5, "level": "Intermediate", "skill": "Data Visualization",
+     "description": "Design effective charts and dashboards for statistical communication.",
+     "modules": ["Chart selection", "Dashboard design", "Storytelling with data", "Practice"]},
+]
+
+# Mock NSSTA / TPAC programme catalogue (demo data).
+MOCK_PROGRAMS = [
+    {"title": "Survey Design & Sampling Methods", "venue_mode": "NSSTA Campus / Offline",
+     "participants_count": 40, "completed_count": 25, "status": "Ongoing",
+     "description": "Survey design, sampling frames, estimation and quality considerations."},
+    {"title": "Data Quality & Official Statistics", "venue_mode": "Online",
+     "participants_count": 60, "completed_count": 60, "status": "Completed",
+     "description": "Quality dimensions and frameworks for official statistical outputs."},
+    {"title": "National Accounts Refresher", "venue_mode": "TPAC Regional Centre",
+     "participants_count": 30, "completed_count": 10, "status": "Scheduled",
+     "description": "Refresher programme on national accounts compilation methodology."},
+]
+
+# Curated question bank used by the deterministic quiz generator when no
+# (or insufficient) uploaded material text is available for a topic.
+TOPIC_QUESTION_BANK = [
+    {"topic": "Python", "keywords": ["python"],
+     "question": "Which Python structure is most suitable for storing key-value pairs?",
+     "options": ["List", "Tuple", "Dictionary", "Set"], "answer": 2,
+     "explanation": "Dictionaries store data as key-value pairs with O(1) average lookup."},
+    {"topic": "Sampling", "keywords": ["sampling", "survey"],
+     "question": "What is the main purpose of stratified sampling?",
+     "options": ["Increase file size", "Ensure representation of important subgroups",
+                 "Remove all bias automatically", "Avoid collecting data"], "answer": 1,
+     "explanation": "Stratified sampling divides the population into subgroups to ensure representation."},
+    {"topic": "SQL", "keywords": ["sql", "database"],
+     "question": "Which SQL clause filters rows before grouping?",
+     "options": ["ORDER BY", "WHERE", "HAVING", "LIMIT"], "answer": 1,
+     "explanation": "WHERE filters rows before GROUP BY is applied; HAVING filters after grouping."},
+    {"topic": "Data Quality", "keywords": ["quality", "data quality"],
+     "question": "Which of the following is a core data-quality dimension?",
+     "options": ["Accuracy", "Screen brightness", "CPU speed", "Font size"], "answer": 0,
+     "explanation": "Accuracy, completeness, timeliness and consistency are core data-quality dimensions."},
+    {"topic": "Cybersecurity", "keywords": ["cybersecurity", "security"],
+     "question": "What is the safest approach for a sensitive government account?",
+     "options": ["Reuse one password", "Share credentials", "Use MFA and unique credentials",
+                 "Disable logging"], "answer": 2,
+     "explanation": "Multi-factor authentication with unique credentials significantly reduces account risk."},
+    {"topic": "Data Visualization", "keywords": ["visual", "chart", "dashboard"],
+     "question": "Which chart is generally best suited for showing a trend over time?",
+     "options": ["Line chart", "Pie chart only", "Radar chart only", "A table with no ordering"],
+     "answer": 0, "explanation": "Line charts effectively show how a value changes across a continuous axis such as time."},
+    {"topic": "Survey Design", "keywords": ["survey design", "questionnaire"],
+     "question": "A questionnaire should primarily be designed to:",
+     "options": ["Maximize ambiguity", "Collect valid information aligned to objectives",
+                 "Increase page count", "Avoid testing"], "answer": 1,
+     "explanation": "Good questionnaire design collects valid, reliable data aligned to survey objectives."},
+    {"topic": "Data Privacy", "keywords": ["privacy"],
+     "question": "Data minimization means:",
+     "options": ["Collecting everything", "Collecting only what is necessary for the purpose",
+                 "Deleting all data immediately", "Publishing personal data"], "answer": 1,
+     "explanation": "Data minimization limits collection/use to what is necessary for a stated purpose."},
+    {"topic": "Communication", "keywords": ["communication"],
+     "question": "An effective official briefing should be:",
+     "options": ["Unstructured", "Clear, evidence-based and audience-aware",
+                 "Only technical jargon", "Without conclusions"], "answer": 1,
+     "explanation": "Effective briefings are clear, evidence-based and tailored to the audience."},
+    {"topic": "AI/ML", "keywords": ["ai", "ml", "machine learning"],
+     "question": "What is a validation set commonly used for?",
+     "options": ["Tuning model choices before final testing", "Replacing training data",
+                 "Storing passwords", "Formatting reports"], "answer": 0,
+     "explanation": "A validation set is used to tune hyperparameters/model choices before final evaluation."},
+    {"topic": "General Skills", "keywords": [],
+     "question": "Which of these best supports evidence-based policymaking?",
+     "options": ["Ignoring data quality checks", "Using validated official statistics",
+                 "Relying only on anecdotes", "Skipping documentation"], "answer": 1,
+     "explanation": "Evidence-based policy relies on validated, well-documented official statistics."},
+    {"topic": "National Accounts", "keywords": ["national accounts", "gdp"],
+     "question": "GDP primarily measures:",
+     "options": ["Total population", "The monetary value of goods and services produced",
+                 "Average rainfall", "Number of government employees"], "answer": 1,
+     "explanation": "GDP measures the total monetary value of all goods and services produced in a period."},
+]
+
+# Diagnostic assessment question bank (employee portal).
+DIAGNOSTIC_QUESTIONS = [
+    {"domain": "Technical", "skill": "Python",
+     "question_text": "Which Python structure is most suitable for storing key-value pairs?",
+     "options": ["List", "Tuple", "Dictionary", "Set"], "correct_index": 2},
+    {"domain": "Statistical", "skill": "Sampling",
+     "question_text": "What is the main purpose of stratified sampling?",
+     "options": ["Increase file size", "Ensure representation of important subgroups",
+                 "Remove all bias automatically", "Avoid collecting data"], "correct_index": 1},
+    {"domain": "Technical", "skill": "SQL",
+     "question_text": "Which SQL clause filters rows before grouping?",
+     "options": ["ORDER BY", "WHERE", "HAVING", "LIMIT"], "correct_index": 1},
+    {"domain": "Statistical", "skill": "Data Quality",
+     "question_text": "Which is a core data-quality dimension?",
+     "options": ["Accuracy", "Screen brightness", "CPU speed", "Font size"], "correct_index": 0},
+    {"domain": "Digital Governance", "skill": "Cybersecurity",
+     "question_text": "What is the safest approach for a sensitive government account?",
+     "options": ["Reuse one password", "Share credentials", "Use MFA and unique credentials",
+                 "Disable logging"], "correct_index": 2},
+    {"domain": "Technical", "skill": "Data Visualization",
+     "question_text": "Which chart is generally suitable for showing a trend over time?",
+     "options": ["Line chart", "Pie chart only", "Radar chart only", "Scatter-free table"], "correct_index": 0},
+    {"domain": "Statistical", "skill": "Survey Design",
+     "question_text": "A questionnaire should primarily be designed to:",
+     "options": ["Maximize ambiguity", "Collect valid information aligned to objectives",
+                 "Increase page count", "Avoid testing"], "correct_index": 1},
+    {"domain": "Digital Governance", "skill": "Data Privacy",
+     "question_text": "Data minimization means:",
+     "options": ["Collecting everything", "Collecting only what is necessary for the purpose",
+                 "Deleting all data immediately", "Publishing personal data"], "correct_index": 1},
+    {"domain": "Behavioural", "skill": "Communication",
+     "question_text": "An effective official briefing should be:",
+     "options": ["Unstructured", "Clear, evidence-based and audience-aware",
+                 "Only technical jargon", "Without conclusions"], "correct_index": 1},
+    {"domain": "Technical", "skill": "AI/ML",
+     "question_text": "What is a validation set commonly used for?",
+     "options": ["Tuning model choices before final testing", "Replacing training data",
+                 "Storing passwords", "Formatting reports"], "correct_index": 0},
+]
+
+EMERGING_SKILLS_SEED = [
+    {"name": "AI / Machine Learning", "current_demand": 55, "future_demand": 92, "priority": "Critical",
+     "affected_departments": "Data Processing & IT, Economic Statistics", "status": "Rising"},
+    {"name": "Cloud Computing", "current_demand": 40, "future_demand": 78, "priority": "High",
+     "affected_departments": "Data Processing & IT", "status": "Rising"},
+    {"name": "Data Privacy & Governance", "current_demand": 50, "future_demand": 80, "priority": "High",
+     "affected_departments": "Administration, Data Processing & IT", "status": "Rising"},
+    {"name": "Geo-spatial Analytics", "current_demand": 25, "future_demand": 60, "priority": "Medium",
+     "affected_departments": "Survey Operations", "status": "Monitoring"},
+]
