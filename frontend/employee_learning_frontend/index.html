@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STATSAKHAM-AI — Employee Learning Platform</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="loadingPage" class="loading-page">
+  <div class="loading-panel">
+    <img src="logo_crop.png" class="loading-logo" alt="STATSAKHAM-AI logo">
+    <h1>STATSAKHAM-AI</h1><div class="loading-dots"><span></span><span></span><span></span></div>
+    <p>AI-Powered Skill Intelligence &amp; Personalized Learning</p>
+  </div>
+</div>
+
+<section id="authPage" class="hidden">
+  <div class="auth-wrap">
+    <div class="auth-brand"><img src="logo_crop.png" alt="STATSAKHAM-AI"><div><strong>STATSAKHAM-AI</strong><small>Official Statistics Learning Platform</small></div></div>
+    <div class="auth-card">
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">Login</button><button class="auth-tab" data-auth-tab="signup">Create Account</button></div>
+      <div id="loginPanel">
+        <h2>Welcome back</h2><p class="muted">Continue your personalized learning journey.</p>
+        <form id="loginForm" class="form-grid">
+          <div><label>Employee ID or Email</label><div class="input-icon"><i class="bi bi-person-badge"></i><input id="loginIdentity" placeholder="EMP00123 or employee@gov.in"></div></div>
+          <div><label>Password</label><div class="input-icon"><i class="bi bi-lock"></i><input id="loginPassword" type="password" placeholder="Enter password"><button type="button" class="eye" data-toggle-pass="loginPassword"><i class="bi bi-eye"></i></button></div></div>
+          <div class="auth-row"><label class="check"><input id="rememberMe" type="checkbox"> Remember me</label><button type="button" class="link-btn" id="forgotBtn">Forgot password?</button></div>
+          <div id="loginMessage"></div><button class="btn-primary-custom w-100" type="submit">Login <i class="bi bi-arrow-right"></i></button>
+          <button class="btn-outline-custom w-100" type="button" id="employeeIdBtn"><i class="bi bi-person-vcard"></i> Use demo Employee ID</button>
+        </form>
+        <p class="auth-bottom">New here? <button class="link-btn" data-switch-signup>Create an account</button></p>
+      </div>
+      <div id="signupPanel" class="hidden">
+        <h2>Create your learning profile</h2><p class="muted">Add the information used for competency mapping.</p>
+        <form id="signupForm" class="form-grid">
+          <div><label>Full Name</label><input id="suName" placeholder="Full name"></div>
+          <div class="two-col"><div><label>Employee ID</label><input id="suId" placeholder="EMP00123"></div><div><label>Email</label><input id="suEmail" type="email" placeholder="name@gov.in"></div></div>
+          <div class="two-col"><div><label>Department</label><input id="suDept" placeholder="Department"></div><div><label>Designation</label><input id="suDesignation" placeholder="Designation"></div></div>
+          <div class="two-col"><div><label>Password</label><input id="suPass" type="password"></div><div><label>Confirm Password</label><input id="suConfirm" type="password"></div></div>
+          <div id="signupMessage"></div><button class="btn-primary-custom w-100" type="submit">Create Account</button>
+        </form><p class="auth-bottom">Already registered? <button class="link-btn" data-switch-login>Login</button></p>
+      </div>
+    </div>
+    <div class="demo-note"><i class="bi bi-info-circle"></i> Demo login: <b>EMP00123</b> / <b>123456</b></div>
+  </div>
+</section>
+
+<section id="dashboardPage" class="hidden">
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><img src="logo_crop.png" alt=""><div><b>STATSAKHAM-AI</b><small>Employee Portal</small></div></div>
+    <nav>
+      <button class="nav-btn active" data-page="home"><i class="bi bi-grid-1x2"></i><span>Dashboard</span></button>
+      <button class="nav-btn" data-page="profile"><i class="bi bi-person"></i><span>My Profile</span></button>
+      <button class="nav-btn" data-page="skills"><i class="bi bi-diagram-3"></i><span>Skills &amp; Competency</span></button>
+      <button class="nav-btn" data-page="diagnostic"><i class="bi bi-clipboard2-check"></i><span>Diagnostic Assessment</span></button>
+      <button class="nav-btn" data-page="recommendations"><i class="bi bi-stars"></i><span>AI Recommendations</span></button>
+      <button class="nav-btn" data-page="learning"><i class="bi bi-mortarboard"></i><span>My Learning Path</span></button>
+      <button class="nav-btn" data-page="quiz"><i class="bi bi-patch-question"></i><span>AI Quiz &amp; Practice</span></button>
+      <button class="nav-btn" data-page="competency"><i class="bi bi-graph-up-arrow"></i><span>Competency Growth</span></button>
+    </nav>
+    <div class="sidebar-footer"><button class="nav-btn" id="notifySide"><i class="bi bi-bell"></i><span>Notifications</span></button><button class="nav-btn" id="logoutBtn"><i class="bi bi-box-arrow-right"></i><span>Logout</span></button><button class="nav-btn muted-nav" id="resetBtn"><i class="bi bi-arrow-counterclockwise"></i><span>Reset Demo</span></button></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><button class="mobile-toggle" id="mobileToggle"><i class="bi bi-list"></i></button><div><div class="eyebrow">EMPLOYEE LEARNING PORTAL</div><h1 id="topbarTitle">Dashboard</h1></div><div class="top-actions"><button class="icon-btn" id="notifyBtn" type="button" aria-label="Notifications"><i class="bi bi-bell"></i><span class="notify-dot"></span></button><div class="profile-area" id="profileArea"><button class="profile-chip" id="profileChip" type="button" aria-haspopup="true" aria-expanded="false"><span class="avatar" id="miniAvatar">E</span><span class="chip-text"><b id="miniName">Employee</b><small>Employee</small></span><i class="bi bi-chevron-down"></i></button><div class="profile-menu hidden" id="profileMenu"><button type="button" id="profileMenuProfile"><i class="bi bi-person"></i><span>My Profile</span></button><button type="button" id="profileMenuSettings"><i class="bi bi-gear"></i><span>Settings</span></button><div class="profile-menu-divider"></div><button type="button" id="profileMenuLogout" class="danger-item"><i class="bi bi-box-arrow-right"></i><span>Logout</span></button></div></div></div></header>
+    <div class="content">
+      <div id="homePage" class="page">
+        <div class="welcome-card"><div><span class="badge-blue">PERSONALIZED LEARNING</span><h2>Good day, <span id="welcomeName">Employee</span> 👋</h2><p>Identify your skill gaps, follow the right training, practice with AI assessments, and track competency growth.</p></div><button class="btn-primary-custom" data-page="diagnostic">Start Diagnostic <i class="bi bi-arrow-right"></i></button></div>
+        <div class="metric-grid"><div class="metric-card"><span class="metric-icon"><i class="bi bi-bullseye"></i></span><div><b id="dashSkillLevel">Not Assessed</b><small>Current skill level</small></div></div><div class="metric-card"><span class="metric-icon"><i class="bi bi-exclamation-triangle"></i></span><div><b id="dashGaps">0</b><small>Priority skill gaps</small></div></div><div class="metric-card"><span class="metric-icon"><i class="bi bi-book"></i></span><div><b id="dashCourses">0</b><small>Courses in learning path</small></div></div><div class="metric-card"><span class="metric-icon"><i class="bi bi-graph-up"></i></span><div><b id="dashProgress">0%</b><small>Overall learning progress</small></div></div></div>
+        <div class="grid-2">
+          <div class="panel"><div class="panel-head"><div><h3>My competency snapshot</h3><p>Current level vs target level</p></div><button class="link-btn" data-page="competency">View details</button></div><div id="skillBars" class="skill-bars"></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Recommended next action</h3><p>STATSAKHAM-AI learning advisor</p></div><i class="bi bi-stars blue-icon"></i></div><div id="nextAction" class="next-action"></div></div>
+        </div>
+        <div class="grid-2"><div class="panel"><div class="panel-head"><div><h3>Continue learning</h3><p>Pick up where you left off</p></div><button class="link-btn" data-page="learning">View all</button></div><div id="continueList"></div></div><div class="panel"><div class="panel-head"><div><h3>Latest notifications</h3><p>Important learning updates</p></div><button class="link-btn" id="viewNotifications">View all</button></div><div id="notificationList"></div></div></div>
+      </div>
+
+      <div id="profilePage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">PROFILE</span><h2>My Employee Profile</h2><p>Maintain the information used for competency mapping and personalized recommendations.</p></div><button class="btn-primary-custom" id="editProfileBtn"><i class="bi bi-pencil"></i> Edit Profile</button></div><div class="panel profile-panel"><div class="profile-hero"><div class="large-avatar" id="profileAvatar">E</div><div><h3 id="profileName">Employee</h3><p id="profileRole">Employee</p><span class="id-pill" id="profileId">Not connected</span></div></div><div class="profile-fields" id="profileFields"></div></div><div class="panel"><h3>Professional context</h3><div class="form-grid two-col"><div><label>Education</label><input id="profileEducation" value="" placeholder="e.g. B.Tech / Graduate"></div><div><label>Years of Experience</label><input id="profileExperience" value="" placeholder="e.g. 3 years"></div><div><label>Current Assignment</label><input id="profileAssignment" value="" placeholder="Current assignment"></div><div><label>Previous Training</label><input id="profileTraining" value="" placeholder="Previous training"></div></div><button class="btn-outline-custom mt-3" id="saveContext">Save Professional Context</button></div></div>
+
+      <div id="skillsPage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">COMPETENCY PROFILE</span><h2>Skills &amp; Competency</h2><p>Set your current and target proficiency. The AI engine uses this to identify gaps.</p></div><button class="btn-primary-custom" id="analyzeSkillsBtn"><i class="bi bi-stars"></i> Analyze Skill Gaps</button></div><div class="panel"><div class="table-responsive"><table class="skills-table"><thead><tr><th>Domain</th><th>Skill</th><th>Current Level</th><th>Target Level</th><th>Gap</th></tr></thead><tbody id="skillsTable"></tbody></table></div></div><div id="skillAnalysis" class="panel hidden"></div></div>
+
+      <div id="diagnosticPage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">DIAGNOSTIC ASSESSMENT</span><h2>Measure your current competency</h2><p>Answer practical questions across statistical, technical, digital governance and behavioural skills.</p></div><span class="status-pill" id="diagnosticStatus">Not Started</span></div><div class="panel question-panel"><div class="question-top"><b id="questionNumber">Question 1 of 10</b><span id="questionDomain">Technical</span></div><div class="progress-track"><div id="testProgress" class="progress-fill"></div></div><h3 id="questionText"></h3><div id="questionOptions" class="options"></div><div id="questionValidation"></div><div class="question-actions"><button class="btn-outline-custom" id="prevQuestion">← Previous</button><button class="btn-primary-custom" id="nextQuestion">Next →</button></div></div><div id="resultCard" class="panel hidden"></div></div>
+
+      <div id="recommendationsPage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">AI LEARNING ADVISOR</span><h2>Personalized Recommendations</h2><p>Recommendations are matched to your competency gaps, assessment results, role and learning goals.</p></div><button class="btn-outline-custom" id="refreshRecommendations"><i class="bi bi-arrow-repeat"></i> Refresh AI Analysis</button></div><div class="recommendation-banner"><i class="bi bi-stars"></i><div><b>IDENTIFY → RECOMMEND → LEARN → ASSESS → IMPROVE</b><p id="recommendSub">Complete your diagnostic assessment to unlock stronger recommendations.</p></div></div><div id="courseList" class="course-list"></div></div>
+
+      <div id="learningPage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">PERSONALIZED LEARNING PATH</span><h2>My Learning Journey</h2><p>Follow recommended iGOT Karmayogi modules and NSSTA/TPAC programmes, then practice and reassess.</p></div><button class="btn-primary-custom" data-page="recommendations">Find Training <i class="bi bi-search"></i></button></div><div class="metric-grid learning-metrics"><div class="metric-card"><span class="metric-icon"><i class="bi bi-hourglass-split"></i></span><div><b id="learningProgress">0%</b><small>Overall progress</small></div></div><div class="metric-card"><span class="metric-icon"><i class="bi bi-check2-circle"></i></span><div><b id="completedCount">0</b><small>Completed</small></div></div><div class="metric-card"><span class="metric-icon"><i class="bi bi-play-circle"></i></span><div><b id="inProgressCount">0</b><small>In progress</small></div></div><div class="metric-card"><span class="metric-icon"><i class="bi bi-journal"></i></span><div><b id="notStartedCount">0</b><small>Not started</small></div></div></div><div class="panel"><div class="panel-head"><div><h3>Learning path</h3><p>Complete modules to update progress</p></div></div><div id="journeyList"></div></div></div>
+
+      <div id="quizPage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">AI ASSESSMENT</span><h2>Quiz &amp; Practice</h2><p>Generate practice questions from your learning topic. This is a frontend demo; the AI endpoint can be connected later.</p></div></div><div class="grid-2"><div class="panel"><h3>Generate a practice quiz</h3><div class="form-grid"><div><label>Topic</label><select id="quizTopic"><option>Python for Data Analysis</option><option>Survey Sampling</option><option>SQL &amp; Data Management</option><option>Data Visualization</option><option>AI &amp; Machine Learning</option></select></div><div class="two-col"><div><label>Questions</label><select id="quizCount"><option>5</option><option>10</option></select></div><div><label>Difficulty</label><select id="quizDifficulty"><option>Intermediate</option><option>Beginner</option><option>Advanced</option></select></div></div><button class="btn-primary-custom" id="generateQuizBtn"><i class="bi bi-stars"></i> Generate Quiz</button></div></div><div class="panel"><h3>Assessment features</h3><div class="feature-list"><div><i class="bi bi-file-earmark-text"></i><span>AI-generated objective questions</span></div><div><i class="bi bi-lightbulb"></i><span>Instant explanation and feedback</span></div><div><i class="bi bi-sliders"></i><span>Adaptive difficulty</span></div><div><i class="bi bi-graph-up"></i><span>Results feed competency growth</span></div></div></div></div><div id="quizArea" class="panel hidden"></div></div>
+
+      <div id="competencyPage" class="page hidden"><div class="page-heading"><div><span class="badge-blue">COMPETENCY INTELLIGENCE</span><h2>Competency Growth</h2><p>See how your learning and assessments are improving capability over time.</p></div><button class="btn-primary-custom" id="reassessBtn"><i class="bi bi-clipboard-check"></i> Reassess Skills</button></div><div class="grid-2"><div class="panel"><div class="panel-head"><div><h3>Before vs current</h3><p>Illustrative demo values update as you complete learning.</p></div></div><div id="growthBars" class="growth-bars"></div></div><div class="panel"><h3>AI insight</h3><div id="growthInsight" class="insight-box"></div></div></div><div class="panel"><h3>Recommended next skills</h3><div id="futureSkills" class="tag-list"></div></div></div>
+    </div>
+  </main>
+</div></section>
+<div id="modalRoot"></div><div id="toastRoot"></div>
+<script src="script.js"></script>
+</body></html>
