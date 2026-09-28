@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Employees | STATSAKHAM</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/style.css" rel="stylesheet">
+</head><body><div class='app-shell'>
+<aside id="sidebar" class="sidebar">
+  <div class="brand"><div class="brand-mark"><i class="bi bi-bar-chart-fill"></i></div><span class="brand-text">STATSAKHAM</span></div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-link" href="dashboard.html"><i class="bi bi-grid-1x2-fill"></i><span class="nav-label">Dashboard</span></a>
+  <div class="nav-section">Workforce</div>
+  <a class="nav-link" href="employees.html"><i class="bi bi-people-fill"></i><span class="nav-label">Employees</span></a>
+  <a class="nav-link" href="departments.html"><i class="bi bi-building"></i><span class="nav-label">Departments</span></a>
+  <a class="nav-link" href="competencies.html"><i class="bi bi-diagram-3-fill"></i><span class="nav-label">Competency Profiles</span></a>
+  <div class="nav-section">Competency Intelligence</div>
+  <a class="nav-link" href="competency-framework.html"><i class="bi bi-ui-checks-grid"></i><span class="nav-label">Competency Framework</span></a>
+  <a class="nav-link" href="skill-gaps.html"><i class="bi bi-exclamation-triangle-fill"></i><span class="nav-label">Skill Gap Analysis</span></a>
+  <a class="nav-link" href="emerging-skills.html"><i class="bi bi-lightning-charge-fill"></i><span class="nav-label">Emerging Skills</span></a>
+  <div class="nav-section">Learning & Training</div>
+  <a class="nav-link" href="igot-courses.html"><i class="bi bi-mortarboard-fill"></i><span class="nav-label">iGOT Courses</span></a>
+  <a class="nav-link" href="nssta-programs.html"><i class="bi bi-calendar2-week-fill"></i><span class="nav-label">NSSTA / TPAC Programs</span></a>
+  <a class="nav-link" href="learning-paths.html"><i class="bi bi-signpost-split-fill"></i><span class="nav-label">Learning Paths</span></a>
+  <a class="nav-link" href="training-analytics.html"><i class="bi bi-graph-up-arrow"></i><span class="nav-label">Training Analytics</span></a>
+  <div class="nav-section">AI Assessment</div>
+  <a class="nav-link" href="materials.html"><i class="bi bi-file-earmark-arrow-up-fill"></i><span class="nav-label">Learning Materials</span></a>
+  <a class="nav-link" href="quiz-generator.html"><i class="bi bi-stars"></i><span class="nav-label">AI Quiz Generator</span></a>
+  <a class="nav-link" href="question-bank.html"><i class="bi bi-question-square-fill"></i><span class="nav-label">Question Bank</span></a>
+  <a class="nav-link" href="assessment-analytics.html"><i class="bi bi-clipboard-data-fill"></i><span class="nav-label">Assessment Analytics</span></a>
+  <div class="nav-section">Analytics & Reports</div>
+  <a class="nav-link" href="workforce-analytics.html"><i class="bi bi-pie-chart-fill"></i><span class="nav-label">Workforce Analytics</span></a>
+  <a class="nav-link" href="reports.html"><i class="bi bi-file-bar-graph-fill"></i><span class="nav-label">Reports</span></a>
+  <div class="nav-section">System</div>
+  <a class="nav-link" href="notifications.html"><i class="bi bi-bell-fill"></i><span class="nav-label">Notifications</span></a>
+  <a class="nav-link" href="settings.html"><i class="bi bi-gear-fill"></i><span class="nav-label">Settings</span></a>
+  <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i><span class="nav-label">Logout</span></a>
+</aside>
+<main id='mainWrap' class='main-wrap'>
+<header class="topbar">
+  <button id="sidebarToggle" class="btn btn-light border"><i class="bi bi-list"></i></button>
+  <div id="pageTitle" class="page-title">Employees</div>
+  <input id="globalSearch" class="form-control d-none d-md-block" style="width:280px" placeholder="Search…">
+  <button class="btn btn-light border" data-bs-toggle="modal" data-bs-target="#helpModal"><i class="bi bi-question-circle"></i></button>
+  <button id="notificationsButton" class="btn btn-light border" type="button" aria-label="Notifications"><i class="bi bi-bell"></i></button>
+  <div class="dropdown">
+    <button class="btn btn-light border dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person-circle me-1"></i> Admin</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="settings.html">Settings</a></li><li><a class="dropdown-item" href="login.html">Logout</a></li>
+    </ul>
+  </div>
+</header>
+<section class='content'>
+<div class="d-flex justify-content-between align-items-center mb-4"><div><h2 class="mb-1">Employees</h2><p class="muted mb-0">Manage officials, profiles, assessments and training actions.</p></div>
+<div class="d-flex gap-2"><button class="btn btn-outline-secondary" id="employeesExport"><i class="bi bi-download me-1"></i>Export</button><button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#recordModal"><i class="bi bi-plus-lg me-1"></i>Add Employee</button></div></div>
+<div class="card p-3 mb-3"><div class="row g-2">
+<div class="col-lg-5"><input class="form-control" id="employeesSearch" placeholder="Search…"></div><div class="col-md-2"><select class="form-select" id="deptFilter"><option value="">All Departments</option></select></div>
+<div class="col-md-2"><select class="form-select" id="trainingFilter"><option value="">All Training Status</option><option>Pending</option><option>In Progress</option><option>Completed</option></select></div>
+</div></div>
+<div class="card"><div class="table-responsive"><table class="table table-hover mb-0" id="employees"><thead><tr><th class="sort-head" data-col="0">Employee ID</th><th class="sort-head" data-col="1">Name</th><th class="sort-head" data-col="2">Department</th><th class="sort-head" data-col="3">Designation</th><th class="sort-head" data-col="4">Experience</th><th class="sort-head" data-col="5">Competency</th><th class="sort-head" data-col="6">Training Status</th><th>Actions</th></tr></thead><tbody id="employeesBody">
+<tr><td colspan="8" class="text-center text-muted py-4">Loading…</td></tr></tbody></table></div><div class="empty-state d-none" id="employeesEmpty"><i class="bi bi-database"></i><div>No employees found. Add your first employee to get started.</div></div></div>
+<div class="modal fade" id="recordModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="recordModalTitle">Add Employee</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><form id="recordForm">
+<input type="hidden" name="record_id">
+<div class="mb-3"><label class="form-label">Full Name</label><input class="form-control" name="name" required></div>
+<div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" name="email"></div>
+<div class="row">
+<div class="col-md-6 mb-3"><label class="form-label">Department</label><input class="form-control" name="department" list="deptOptions" placeholder="e.g. Economic Statistics"><datalist id="deptOptions"></datalist></div>
+<div class="col-md-6 mb-3"><label class="form-label">Designation</label><input class="form-control" name="designation" placeholder="e.g. Statistical Officer"></div>
+</div>
+<div class="row">
+<div class="col-md-6 mb-3"><label class="form-label">Experience (years)</label><input type="number" min="0" step="0.5" class="form-control" name="experience_years" value="0"></div>
+<div class="col-md-6 mb-3"><label class="form-label">Phone</label><input class="form-control" name="phone"></div>
+</div>
+<div class="mb-3"><label class="form-label">Notes</label><textarea class="form-control" name="notes" rows="3"></textarea></div>
+<button class="btn btn-brand w-100">Save</button></form></div></div></div></div>
+</section></main></div>
+<div id="loadingOverlay" class="loading-overlay"><div class="text-center"><div class="spinner-border text-primary"></div><div class="mt-2 fw-semibold">Loading…</div></div></div>
+<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>
+<div class="modal fade" id="helpModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">STATSAKHAM Help</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p class="mb-0">Use the sidebar to manage workforce competency, training, AI assessments, analytics and reports. Backend and AI services connect through the defined API endpoints.</p></div></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/app.js"></script>
+<script>
+setPageTitle("Employees");
+tableSearch("employeesSearch","employees");
+document.getElementById("employeesExport")?.addEventListener("click",()=>exportTableToCSV("employees","employees.csv"));
+document.querySelectorAll("#" + "employees" + " .sort-head").forEach(th=>th.addEventListener("click",()=>tableSort("employees",Number(th.dataset.col),true)));
+
+let allDepartments = [];
+
+function rowHtml(e){
+  const statusBadge = {"Pending":"bg-light text-dark","In Progress":"bg-warning text-dark","Completed":"bg-success"}[e.trainingStatus] || "bg-light text-dark";
+  return `<tr data-id="${e.id}">
+    <td>${escapeHtml(e.employeeId)}</td><td>${escapeHtml(e.name)}</td><td>${escapeHtml(e.department||"—")}</td>
+    <td>${escapeHtml(e.designation||"—")}</td><td>${e.experience ?? 0}</td>
+    <td>${e.competency ?? 0}%</td><td><span class="badge ${statusBadge}">${escapeHtml(e.trainingStatus)}</span></td>
+    <td><div class="btn-group btn-group-sm">
+      <button class="btn btn-outline-secondary" data-action="edit" data-id="${e.id}">Edit</button>
+      <button class="btn btn-outline-success" data-action="assess" data-id="${e.id}">Assess</button>
+      <button class="btn btn-outline-danger" data-action="delete" data-id="${e.id}">Delete</button>
+    </div></td></tr>`;
+}
+
+async function loadDepartmentOptions(){
+  try{
+    allDepartments = await fetchData("/admin/departments");
+    const deptFilter = document.getElementById("deptFilter");
+    const deptOptions = document.getElementById("deptOptions");
+    deptFilter.innerHTML = '<option value="">All Departments</option>' + allDepartments.map(d=>`<option value="${escapeHtml(d.name)}">${escapeHtml(d.name)}</option>`).join("");
+    deptOptions.innerHTML = allDepartments.map(d=>`<option value="${escapeHtml(d.name)}">`).join("");
+  }catch(e){ /* non-fatal */ }
+}
+
+async function loadEmployees(){
+  const tbody = document.getElementById("employeesBody");
+  tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-4">Loading…</td></tr>`;
+  try{
+    const dept = document.getElementById("deptFilter").value;
+    const status = document.getElementById("trainingFilter").value;
+    const params = new URLSearchParams();
+    if(dept) params.set("department", dept);
+    if(status) params.set("training_status", status);
+    const data = await fetchData("/admin/employees?" + params.toString());
+    const items = data.items || [];
+    tbody.innerHTML = items.map(rowHtml).join("");
+    document.getElementById("employeesEmpty").classList.toggle("d-none", items.length > 0);
+    tbody.querySelectorAll('[data-action="edit"]').forEach(b=>b.addEventListener("click", ()=>openEdit(Number(b.dataset.id))));
+    tbody.querySelectorAll('[data-action="assess"]').forEach(b=>b.addEventListener("click", ()=>runAssess(Number(b.dataset.id))));
+    tbody.querySelectorAll('[data-action="delete"]').forEach(b=>b.addEventListener("click", ()=>removeEmployee(Number(b.dataset.id))));
+  }catch(e){ tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger py-4">${escapeHtml(e.message)}</td></tr>`; }
+}
+
+async function openEdit(id){
+  try{
+    const emp = await fetchData(`/admin/employees/${id}`);
+    const form = document.getElementById("recordForm");
+    form.elements["record_id"].value = emp.id;
+    form.name.value = emp.name || "";
+    form.email.value = emp.email || "";
+    form.department.value = emp.department || "";
+    form.designation.value = emp.designation || "";
+    form.experience_years.value = emp.experience ?? 0;
+    form.phone.value = emp.phone || "";
+    form.notes.value = emp.notes || "";
+    document.getElementById("recordModalTitle").textContent = "Edit Employee";
+    new bootstrap.Modal(document.getElementById("recordModal")).show();
+  }catch(e){ toast(e.message,"danger"); }
+}
+
+async function runAssess(id){
+  try{
+    const result = await fetchData(`/admin/employees/${id}/assess`, {method:"POST"});
+    toast(`Assessment complete: ${result.gapsIdentified} gap(s) identified`);
+    loadEmployees();
+  }catch(e){ toast(e.message,"danger"); }
+}
+
+async function removeEmployee(id){
+  if(!confirm("Delete this employee? This cannot be undone.")) return;
+  try{ await deleteData(`/admin/employees/${id}`); toast("Employee deleted"); loadEmployees(); }
+  catch(e){ toast(e.message,"danger"); }
+}
+
+document.getElementById("deptFilter")?.addEventListener("change", loadEmployees);
+document.getElementById("trainingFilter")?.addEventListener("change", loadEmployees);
+document.querySelector('[data-bs-target="#recordModal"]')?.addEventListener("click", ()=>{
+  document.getElementById("recordForm").reset();
+  document.getElementById("recordForm").elements["record_id"].value = "";
+  document.getElementById("recordModalTitle").textContent = "Add Employee";
+});
+
+document.getElementById("recordForm")?.addEventListener("submit",async e=>{
+ e.preventDefault(); const btn=e.target.querySelector("button[type=submit], button:not([type])"); btn.disabled=true; btn.innerHTML='<span class="spinner-border spinner-border-sm me-2"></span>Saving…';
+ const payload=Object.fromEntries(new FormData(e.target));
+ const id = payload.record_id; delete payload.record_id;
+ payload.experience_years = Number(payload.experience_years) || 0;
+ try{
+   if(id){ await putData(`/admin/employees/${id}`, payload); toast("Employee updated"); }
+   else{ await postData("/admin/employees", payload); toast("Employee added"); }
+   bootstrap.Modal.getInstance(document.getElementById("recordModal"))?.hide();
+   loadEmployees();
+ }
+ catch(err){toast(err.message || "Could not save employee","danger")} finally{btn.disabled=false;btn.innerHTML="Save"}
+});
+
+loadDepartmentOptions();
+loadEmployees();
+</script></body></html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NSSTA / TPAC Programs | STATSAKHAM</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/style.css" rel="stylesheet">
+</head><body><div class='app-shell'>
+<aside id="sidebar" class="sidebar">
+  <div class="brand"><div class="brand-mark"><i class="bi bi-bar-chart-fill"></i></div><span class="brand-text">STATSAKHAM</span></div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-link" href="dashboard.html"><i class="bi bi-grid-1x2-fill"></i><span class="nav-label">Dashboard</span></a>
+  <div class="nav-section">Workforce</div>
+  <a class="nav-link" href="employees.html"><i class="bi bi-people-fill"></i><span class="nav-label">Employees</span></a>
+  <a class="nav-link" href="departments.html"><i class="bi bi-building"></i><span class="nav-label">Departments</span></a>
+  <a class="nav-link" href="competencies.html"><i class="bi bi-diagram-3-fill"></i><span class="nav-label">Competency Profiles</span></a>
+  <div class="nav-section">Competency Intelligence</div>
+  <a class="nav-link" href="competency-framework.html"><i class="bi bi-ui-checks-grid"></i><span class="nav-label">Competency Framework</span></a>
+  <a class="nav-link" href="skill-gaps.html"><i class="bi bi-exclamation-triangle-fill"></i><span class="nav-label">Skill Gap Analysis</span></a>
+  <a class="nav-link" href="emerging-skills.html"><i class="bi bi-lightning-charge-fill"></i><span class="nav-label">Emerging Skills</span></a>
+  <div class="nav-section">Learning & Training</div>
+  <a class="nav-link" href="igot-courses.html"><i class="bi bi-mortarboard-fill"></i><span class="nav-label">iGOT Courses</span></a>
+  <a class="nav-link" href="nssta-programs.html"><i class="bi bi-calendar2-week-fill"></i><span class="nav-label">NSSTA / TPAC Programs</span></a>
+  <a class="nav-link" href="learning-paths.html"><i class="bi bi-signpost-split-fill"></i><span class="nav-label">Learning Paths</span></a>
+  <a class="nav-link" href="training-analytics.html"><i class="bi bi-graph-up-arrow"></i><span class="nav-label">Training Analytics</span></a>
+  <div class="nav-section">AI Assessment</div>
+  <a class="nav-link" href="materials.html"><i class="bi bi-file-earmark-arrow-up-fill"></i><span class="nav-label">Learning Materials</span></a>
+  <a class="nav-link" href="quiz-generator.html"><i class="bi bi-stars"></i><span class="nav-label">AI Quiz Generator</span></a>
+  <a class="nav-link" href="question-bank.html"><i class="bi bi-question-square-fill"></i><span class="nav-label">Question Bank</span></a>
+  <a class="nav-link" href="assessment-analytics.html"><i class="bi bi-clipboard-data-fill"></i><span class="nav-label">Assessment Analytics</span></a>
+  <div class="nav-section">Analytics & Reports</div>
+  <a class="nav-link" href="workforce-analytics.html"><i class="bi bi-pie-chart-fill"></i><span class="nav-label">Workforce Analytics</span></a>
+  <a class="nav-link" href="reports.html"><i class="bi bi-file-bar-graph-fill"></i><span class="nav-label">Reports</span></a>
+  <div class="nav-section">System</div>
+  <a class="nav-link" href="notifications.html"><i class="bi bi-bell-fill"></i><span class="nav-label">Notifications</span></a>
+  <a class="nav-link" href="settings.html"><i class="bi bi-gear-fill"></i><span class="nav-label">Settings</span></a>
+  <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i><span class="nav-label">Logout</span></a>
+</aside>
+<main id='mainWrap' class='main-wrap'>
+<header class="topbar">
+  <button id="sidebarToggle" class="btn btn-light border"><i class="bi bi-list"></i></button>
+  <div id="pageTitle" class="page-title">NSSTA / TPAC Programs</div>
+  <input id="globalSearch" class="form-control d-none d-md-block" style="width:280px" placeholder="Search…">
+  <button class="btn btn-light border" data-bs-toggle="modal" data-bs-target="#helpModal"><i class="bi bi-question-circle"></i></button>
+  <button id="notificationsButton" class="btn btn-light border" type="button" aria-label="Notifications"><i class="bi bi-bell"></i></button>
+  <div class="dropdown">
+    <button class="btn btn-light border dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person-circle me-1"></i> Admin</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="settings.html">Settings</a></li><li><a class="dropdown-item" href="login.html">Logout</a></li>
+    </ul>
+  </div>
+</header>
+<section class='content'>
+<div class="d-flex justify-content-between align-items-center mb-4"><div><h2 class="mb-1">NSSTA / TPAC Programs</h2><p class="muted mb-0">Manage programme schedules, participants and status.</p></div>
+<div class="d-flex gap-2"><button class="btn btn-outline-secondary" id="syncBtn"><i class="bi bi-arrow-repeat me-1"></i>Sync Catalogue</button><button class="btn btn-outline-secondary" id="programsExport"><i class="bi bi-download me-1"></i>Export</button><button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#recordModal"><i class="bi bi-plus-lg me-1"></i>Add Program</button></div></div>
+<div class="card p-3 mb-3"><div class="row g-2">
+<div class="col-lg-5"><input class="form-control" id="programsSearch" placeholder="Search…"></div>
+</div></div>
+<div class="card"><div class="table-responsive"><table class="table table-hover mb-0" id="programs"><thead><tr><th class="sort-head" data-col="0">Program</th><th class="sort-head" data-col="1">Venue/Mode</th><th class="sort-head" data-col="2">Schedule</th><th class="sort-head" data-col="3">Participants</th><th class="sort-head" data-col="4">Completed</th><th class="sort-head" data-col="5">Status</th><th>Actions</th></tr></thead><tbody id="programsBody"><tr><td colspan="7" class="text-center text-muted py-4">Loading…</td></tr></tbody></table></div><div class="empty-state d-none" id="programsEmpty"><i class="bi bi-database"></i><div>No programmes yet. Sync the catalogue or add one manually.</div></div></div>
+<div class="modal fade" id="recordModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="recordModalTitle">Add Program</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><form id="recordForm">
+<input type="hidden" name="record_id">
+<div class="mb-3"><label class="form-label">Programme Title</label><input class="form-control" name="title" required></div>
+<div class="row">
+<div class="col-md-6 mb-3"><label class="form-label">Venue / Mode</label><input class="form-control" name="venue_mode" placeholder="e.g. Online / NSSTA Campus"></div>
+<div class="col-md-6 mb-3"><label class="form-label">Status</label><select class="form-select" name="status"><option>Scheduled</option><option>Ongoing</option><option>Completed</option></select></div>
+</div>
+<div class="row">
+<div class="col-md-6 mb-3"><label class="form-label">Participants</label><input type="number" min="0" class="form-control" name="participants_count" value="0"></div>
+<div class="col-md-6 mb-3"><label class="form-label">Completed</label><input type="number" min="0" class="form-control" name="completed_count" value="0"></div>
+</div>
+<div class="mb-3"><label class="form-label">Description</label><textarea class="form-control" name="description" rows="3"></textarea></div>
+<button class="btn btn-brand w-100">Save</button></form></div></div></div></div>
+</section></main></div>
+<div id="loadingOverlay" class="loading-overlay"><div class="text-center"><div class="spinner-border text-primary"></div><div class="mt-2 fw-semibold">Loading…</div></div></div>
+<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>
+<div class="modal fade" id="helpModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">STATSAKHAM Help</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p class="mb-0">Use the sidebar to manage workforce competency, training, AI assessments, analytics and reports. Backend and AI services connect through the defined API endpoints.</p></div></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/app.js"></script>
+<script>
+setPageTitle("NSSTA / TPAC Programs");
+tableSearch("programsSearch","programs");
+document.getElementById("programsExport")?.addEventListener("click",()=>exportTableToCSV("programs","programs.csv"));
+document.querySelectorAll("#" + "programs" + " .sort-head").forEach(th=>th.addEventListener("click",()=>tableSort("programs",Number(th.dataset.col),true)));
+
+let programRows = [];
+function fmtDate(d){ return d ? new Date(d).toLocaleDateString() : "—"; }
+function rowHtml(p){
+  return `<tr data-id="${p.id}"><td>${escapeHtml(p.title)}</td><td>${escapeHtml(p.venueMode||"—")}</td>
+    <td>${fmtDate(p.scheduleStart)}${p.scheduleEnd? " – "+fmtDate(p.scheduleEnd):""}</td>
+    <td>${p.participants}</td><td>${p.completed}</td>
+    <td><span class="badge bg-info text-dark">${escapeHtml(p.status)}</span></td>
+    <td><div class="btn-group btn-group-sm">
+      <button class="btn btn-outline-secondary" data-action="edit" data-id="${p.id}">Edit</button>
+      <button class="btn btn-outline-danger" data-action="delete" data-id="${p.id}">Delete</button>
+    </div></td></tr>`;
+}
+
+async function loadPrograms(){
+  const tbody = document.getElementById("programsBody");
+  tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted py-4">Loading…</td></tr>`;
+  try{
+    programRows = await fetchData("/admin/programs");
+    tbody.innerHTML = programRows.map(rowHtml).join("");
+    document.getElementById("programsEmpty").classList.toggle("d-none", programRows.length > 0);
+    tbody.querySelectorAll('[data-action="edit"]').forEach(b=>b.addEventListener("click", ()=>{
+      const row = programRows.find(x=>x.id===Number(b.dataset.id));
+      const form = document.getElementById("recordForm");
+      form.elements["record_id"].value = row.id;
+      form.title.value = row.title;
+      form.venue_mode.value = row.venueMode || "";
+      form.status.value = row.status;
+      form.participants_count.value = row.participants;
+      form.completed_count.value = row.completed;
+      form.description.value = row.description || "";
+      document.getElementById("recordModalTitle").textContent = "Edit Program";
+      new bootstrap.Modal(document.getElementById("recordModal")).show();
+    }));
+    tbody.querySelectorAll('[data-action="delete"]').forEach(b=>b.addEventListener("click", async ()=>{
+      if(!confirm("Delete this programme?")) return;
+      try{ await deleteData(`/admin/programs/${b.dataset.id}`); toast("Deleted"); loadPrograms(); }
+      catch(e){ toast(e.message,"danger"); }
+    }));
+  }catch(e){ tbody.innerHTML = `<tr><td colspan="7" class="text-center text-danger py-4">${escapeHtml(e.message)}</td></tr>`; }
+}
+
+document.getElementById("syncBtn")?.addEventListener("click", async (e)=>{
+  const btn=e.currentTarget, original=btn.innerHTML; btn.disabled=true;
+  btn.innerHTML='<span class="spinner-border spinner-border-sm me-2"></span>Syncing…';
+  try{ const r = await fetchData("/admin/programs/sync",{method:"POST"}); toast(`Sync complete (${r.created} new programme(s)). ${r.note}`); loadPrograms(); }
+  catch(err){ toast(err.message,"danger"); } finally{ btn.disabled=false; btn.innerHTML=original; }
+});
+
+document.querySelector('[data-bs-target="#recordModal"]')?.addEventListener("click", ()=>{
+  document.getElementById("recordForm").reset();
+  document.getElementById("recordForm").elements["record_id"].value = "";
+  document.getElementById("recordModalTitle").textContent = "Add Program";
+});
+
+document.getElementById("recordForm")?.addEventListener("submit",async e=>{
+ e.preventDefault(); const btn=e.target.querySelector("button"); btn.disabled=true; btn.innerHTML='<span class="spinner-border spinner-border-sm me-2"></span>Saving…';
+ const payload=Object.fromEntries(new FormData(e.target));
+ const id = payload.record_id; delete payload.record_id;
+ payload.participants_count = Number(payload.participants_count);
+ payload.completed_count = Number(payload.completed_count);
+ try{
+   if(id){ await putData(`/admin/programs/${id}`, payload); toast("Programme updated"); }
+   else{ await postData("/admin/programs",payload); toast("Programme added"); }
+   bootstrap.Modal.getInstance(document.getElementById("recordModal"))?.hide();
+   loadPrograms();
+ }
+ catch(err){toast(err.message || "Could not save programme","danger")} finally{btn.disabled=false;btn.innerHTML="Save"}
+});
+
+loadPrograms();
+</script></body></html>
